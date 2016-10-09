@@ -12,11 +12,11 @@ class VotingBooth
       else raise
     end
 
-    send_mail(verdict)
-
     unvote # to guarantee consistency
     set.add(user)
     _update_counts
+    send_mail(verdict)
+
     self
   end
   

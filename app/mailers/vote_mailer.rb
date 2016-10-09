@@ -1,5 +1,5 @@
 class VoteMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: 'notifications@movierama.com'
 
   def notify(voter, movie, verdict)
     @movie   = movie 
@@ -11,6 +11,6 @@ class VoteMailer < ActionMailer::Base
   end
 
   def subject(voter)
-    "#{voter.name.capitalize} voted on a film you submitted"
+    "#{voter.name.titleize} voted on a film you submitted"
   end
 end

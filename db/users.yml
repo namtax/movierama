@@ -1,9 +1,13 @@
 - name: John McFoo
   uid:  'null|johnmcfoo'
+  email: john@mail.com
 - name: Alice Wallace
   uid:  'null|alice'
+  email: namtax@googlemail.com
 - name: Bob Ablleton
   uid:  'null|bob'
+  email: bob@mail.com
 - name: Charlie O'Callaghan
   uid:  'null|charlie'
+  email: charlie@mail.com
 
