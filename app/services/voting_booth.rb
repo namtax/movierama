@@ -37,6 +37,7 @@ class VotingBooth
   def _update_counts
     movie.update(
       liker_count: movie.likers.size,
-      hater_count: movie.haters.size)
+      hater_count: movie.haters.size
+    )
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe VotingBooth do 
   subject      { described_class.new(bob, movie) }
   let(:bob)    { double } 
-  let(:movie)  { double }
+  let(:movie)  { double(likers: Set.new, haters: Set.new, update: nil) }
   let(:mailer) { double }
 
   describe '#vote' do 
