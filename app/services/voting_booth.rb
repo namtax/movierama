@@ -28,10 +28,10 @@ class VotingBooth
   end
 
   private
-  attr_reader :movie
+  attr_reader :movie, :user
 
   def send_mail
-    VoteMailer.notify(movie.user).deliver
+    VoteMailer.notify(user, movie.user).deliver
   end
 
   def _update_counts
