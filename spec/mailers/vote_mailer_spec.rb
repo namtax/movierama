@@ -28,7 +28,8 @@ RSpec.describe VoteMailer do
     )
   end
 
-  let(:mail) { described_class.notify(bob, movie, :like) }
+  let(:mail)    { described_class.notify(bob, movie, verdict) }
+  let(:verdict) {  } 
 
   describe '#notify' do
     it 'sends vote notification email to expected email' do 
@@ -47,8 +48,16 @@ RSpec.describe VoteMailer do
       expect(mail.body).to include('Bob voted on Empire Strikes Back')
     end
 
-    it 'notifies user of the type of vote' do 
-      expect(mail.body).to include('Bob likes your film!!')
+    context 'verdict' do 
+      context 'like' do 
+        let(:verdict) { :like }
+        it { expect(mail.body).to include('Bob likes your film!!') }
+      end
+
+      context 'hate' do 
+        let(:verdict) { :hate }
+        it { expect(mail.body).to include('Bob hates your film!!') }
+      end
     end
   end
 end
