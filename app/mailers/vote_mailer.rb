@@ -1,11 +1,12 @@
 class VoteMailer < ActionMailer::Base
   default from: "from@example.com"
 
-  def notify(voter, movie)
-    @movie = movie 
-    @user  = movie.user
-    @voter = voter
-    
+  def notify(voter, movie, verdict)
+    @movie   = movie 
+    @user    = movie.user
+    @voter   = voter
+    @verdict = verdict
+
     mail(to: movie.user.email, subject: subject(voter))
   end
 

@@ -36,7 +36,7 @@ RSpec.describe VotingBooth do
     subject.vote(:like)
   end
 
-  it 'sends vote notification email to correct address' do 
+  it 'sends vote notification email to expected email' do 
     expect(mail.to).to eq([dave.email])
   end
 
@@ -46,5 +46,9 @@ RSpec.describe VotingBooth do
 
   it 'notifies user of the film that was voted on' do 
     expect(mail.body).to include('Bob voted on Empire strikes back')
+  end
+
+  it 'notifies user of the type of vote' do 
+    expect(mail.body).to include('Bob likes your film!!')
   end
 end

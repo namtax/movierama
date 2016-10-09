@@ -5,24 +5,24 @@ class VotingBooth
     @movie = movie
   end
 
-  def vote(like_or_hate)
-    set = case like_or_hate
+  def vote(verdict)
+    set = case verdict
       when :like then movie.likers
       when :hate then movie.haters
       else raise
     end
 
-    send_mail
+    send_mail(verdict)
 
     unvote # to guarantee consistency
-    set.add(@user)
+    set.add(user)
     _update_counts
     self
   end
   
   def unvote
-    movie.likers.delete(@user)
-    movie.haters.delete(@user)
+    movie.likers.delete(user)
+    movie.haters.delete(user)
     _update_counts
     self
   end
@@ -30,12 +30,12 @@ class VotingBooth
   private
   attr_reader :movie, :user
 
-  def send_mail
-    VoteMailer.notify(user, movie).deliver
+  def send_mail(verdict)
+    VoteMailer.notify(user, movie, verdict).deliver
   end
 
   def _update_counts
-    @movie.update(
+    movie.update(
       liker_count: movie.likers.size,
       hater_count: movie.haters.size)
   end
