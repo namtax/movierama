@@ -31,7 +31,7 @@ class VotingBooth
   attr_reader :movie, :user
 
   def send_mail
-    VoteMailer.notify(user, movie.user).deliver
+    VoteMailer.notify(user, movie).deliver
   end
 
   def _update_counts

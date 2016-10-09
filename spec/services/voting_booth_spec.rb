@@ -32,13 +32,19 @@ RSpec.describe VotingBooth do
 
   let(:mail) { ActionMailer::Base.deliveries.first }
 
-  it 'sends vote notification email to correct address' do 
+  before do 
     subject.vote(:like)
+  end
+
+  it 'sends vote notification email to correct address' do 
     expect(mail.to).to eq([dave.email])
   end
 
   it 'sends vote notification email with correct subject' do 
-    subject.vote(:like)
-    expect(mail.subject).to eq("Bob voted on a film you submitted")
+    expect(mail.subject).to eq('Bob voted on a film you submitted')
+  end
+
+  it 'notifies user of the film that was voted on' do 
+    expect(mail.body).to include('Bob voted on Empire strikes back')
   end
 end
