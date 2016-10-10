@@ -23,7 +23,7 @@ RSpec.describe VotingBooth do
 
     context 'user not subscribed for notifications' do 
       let(:setting) { 'false' }
-      it 'sends vote notification email' do 
+      it 'does not send vote notification email' do 
         expect(mailer).to_not receive(:deliver)
         subject.vote(:like)
       end

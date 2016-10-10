@@ -6,10 +6,7 @@ require 'support/with_user'
 RSpec.describe 'notifications/disable/:id', type: :feature do
   with_auth_mock
 
-  let(:page) { Pages::Home.new }
   let(:user) { User.all.first }
-
-  before { page.open }
 
   context 'logged in' do 
     with_logged_in_user
