@@ -30,6 +30,7 @@ RSpec.describe VoteMailer do
 
   let(:mail)    { described_class.notify(bob, movie, verdict) }
   let(:verdict) {  } 
+  let(:link)    { "<a href='https://movierama.dev/notifications/disable'>Click here to unsubscribe</a>" }
 
   describe '#notify' do
     it 'sends vote notification email to expected email' do 
@@ -58,6 +59,10 @@ RSpec.describe VoteMailer do
         let(:verdict) { :hate }
         it { expect(mail.body).to include('Bob hates your film!!') }
       end
+    end
+
+    it 'provides link to unsubscribe' do 
+      expect(mail.body).to include(link)
     end
   end
 end
