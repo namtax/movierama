@@ -15,7 +15,7 @@ class VotingBooth
     unvote # to guarantee consistency
     set.add(user)
     _update_counts
-    send_mail(verdict)
+    send_mail(verdict) if movie_user_subscribed?
 
     self
   end
@@ -39,5 +39,9 @@ class VotingBooth
       liker_count: movie.likers.size,
       hater_count: movie.haters.size
     )
+  end
+
+  def movie_user_subscribed?
+    movie.user.notifications == 'true'
   end
 end
