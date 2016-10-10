@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :movies, only: %(index), controller: 'movies'
   end
 
+  get '/notifications/disable/:id', to: 'notifications#disable'
+
   root 'movies#index'
 end
