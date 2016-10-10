@@ -15,12 +15,12 @@ RSpec.describe 'notifications/disable/:id', type: :feature do
     with_logged_in_user
 
     it 'notifies user they are unsubscribed' do 
-      visit "notifications/disable/#{user.id}"
+      visit 'notifications/disable'
       expect(page).to have_content('You have been unsubscribed from notifications')
     end
 
     it 'updates users notification settings' do 
-      visit "notifications/disable/#{user.id}"
+      visit 'notifications/disable'
       expect(user.load!.notifications).to eq 'false'
     end
   end
