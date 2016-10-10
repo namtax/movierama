@@ -1,5 +1,9 @@
 class NotificationsController < ApplicationController
   def disable 
-    current_user.update(notifications: 'false')
+    if current_user
+      current_user.update(notifications: 'false')
+    else
+      redirect_to root_url
+    end
   end
 end

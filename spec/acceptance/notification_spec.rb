@@ -24,4 +24,11 @@ RSpec.describe 'notifications/disable/:id', type: :feature do
       expect(user.load!.notifications).to eq 'false'
     end
   end
+
+  context 'logged out' do 
+    it 'redirects to homepage' do 
+      visit 'notifications/disable'
+      expect(page).to have_content('Movies')
+    end      
+  end
 end
