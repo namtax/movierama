@@ -14,6 +14,7 @@ class VotingBooth
 
     unvote # to guarantee consistency
     set.add(user)
+    create_vote
     _update_counts
     send_mail(verdict) if movie_user_subscribed?
 
@@ -32,6 +33,10 @@ class VotingBooth
 
   def send_mail(verdict)
     VoteMailer.notify(user, movie, verdict).deliver
+  end
+
+  def create_vote
+    Vote.create(movie: movie, user: user)
   end
 
   def _update_counts
