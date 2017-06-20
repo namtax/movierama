@@ -7,6 +7,7 @@ module RspecSupportWithUser
       OmniAuth.config.add_mock(
         :github,
         uid: '12345',
+        notifications: 'true',
         info: {
           name: 'John McFoo'
         }

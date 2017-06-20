@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.1.5'
 
 # App runner
 gem 'foreman'
@@ -64,4 +64,8 @@ group :test do
   gem 'rspec-rails'    # Test framework with Rail extensions
   gem 'poltergeist'    # Driver for PhantomJS headless browser
   gem 'capybara'       # DSL for browser control
+end
+
+group :development do 
+  gem 'pry-remote', :group => :development
 end
